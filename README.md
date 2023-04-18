@@ -28,3 +28,15 @@ npm run start
 
 - [axios](https://www.npmjs.com/package/axios) - Promise based HTTP client for Node.js
 - [typescript](https://www.npmjs.com/package/typescript) - TypeScript language compiler and tooling for JavaScript development
+
+## Folder Structure
+```bash
+├── .gitignore
+├── README.md
+├── README_BASH.md
+├── README_LINKS.md
+├── index.js
+├── index.ts
+├── package-lock.json
+└── package.json
+```
