@@ -26,5 +26,5 @@ npm run start
 
 ## Dependencies
 
-- [https://www.npmjs.com/package/axios]axios - Promise based HTTP client for Node.js
-- [https://www.npmjs.com/package/typescript]typescript - TypeScript language compiler and tooling for JavaScript development
+- [axios](https://www.npmjs.com/package/axios) - Promise based HTTP client for Node.js
+- [typescript](https://www.npmjs.com/package/typescript) - TypeScript language compiler and tooling for JavaScript development
