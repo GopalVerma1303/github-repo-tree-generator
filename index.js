@@ -45,7 +45,11 @@ function createReadmeFromRepo(repoUrl) {
             switch (_b.label) {
                 case 0:
                     _b.trys.push([0, 4, , 5]);
-                    return [4 /*yield*/, axios_1.default.get("https://api.github.com/repos/".concat(repoUrl, "/contents"))];
+                    return [4 /*yield*/, axios_1.default.get("https://api.github.com/repos/".concat(repoUrl, "/contents"), {
+                            headers: {
+                                Authorization: "Bearer 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"
+                            }
+                        })];
                 case 1:
                     response = _b.sent();
                     contents = response.data;
@@ -93,7 +97,11 @@ function generateReadmeContent_LINKS(contents, depth) {
                     if (!(type === 'dir')) return [3 /*break*/, 5];
                     // Add directory item to readme content
                     readmeContent += "".concat(indent, "- ").concat(name_1, "/\n");
-                    return [4 /*yield*/, axios_1.default.get("https://api.github.com/repos/".concat(repoUrl, "/contents/").concat(path))];
+                    return [4 /*yield*/, axios_1.default.get("https://api.github.com/repos/".concat(repoUrl, "/contents/").concat(path), {
+                            headers: {
+                                Authorization: "Bearer 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"
+                            }
+                        })];
                 case 3:
                     response = _b.sent();
                     dirContents = response.data;
@@ -132,7 +140,11 @@ function generateReadmeContent_BASH(contents, prefix) {
                     if (!(type === 'dir')) return [3 /*break*/, 5];
                     // Add directory item to readme content
                     readmeContent += "".concat(indent).concat(name_2, "/\n");
-                    return [4 /*yield*/, axios_1.default.get("https://api.github.com/repos/".concat(repoUrl, "/contents/").concat(path))];
+                    return [4 /*yield*/, axios_1.default.get("https://api.github.com/repos/".concat(repoUrl, "/contents/").concat(path), {
+                            headers: {
+                                Authorization: "Bearer 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"
+                            }
+                        })];
                 case 3:
                     response = _c.sent();
                     dirContents = response.data;
@@ -150,5 +162,5 @@ function generateReadmeContent_BASH(contents, prefix) {
     });
 }
 // Example usage
-var repoUrl = 'microsoft/vscode';
+var repoUrl = 'GopalVerma1303/thirdfunding'; //try microsoft/vscode :D
 createReadmeFromRepo(repoUrl);

@@ -4,7 +4,13 @@ import * as fs from 'fs';
 async function createReadmeFromRepo(repoUrl: string): Promise<void> {
     try {
         // Fetch repository contents from GitHub API
-        const response = await axios.get(`https://api.github.com/repos/${repoUrl}/contents`);
+        const response = await axios.get(`https://api.github.com/repos/${repoUrl}/contents`,
+            {
+                headers: {
+                    Authorization: `Bearer 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`
+                }
+            }
+        );
 
         // Extract file and directory information from the response
         const contents = response.data;
@@ -39,7 +45,11 @@ async function generateReadmeContent_LINKS(contents: any[], depth: number = 0): 
             readmeContent += `${indent}- ${name}/\n`;
 
             // Fetch directory contents and recursively generate readme content for nested contents
-            const response = await axios.get(`https://api.github.com/repos/${repoUrl}/contents/${path}`);
+            const response = await axios.get(`https://api.github.com/repos/${repoUrl}/contents/${path}`, {
+                headers: {
+                    Authorization: `Bearer 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`
+                }
+            });
             const dirContents = response.data;
             readmeContent += await generateReadmeContent_LINKS(dirContents, depth + 1);
         }
@@ -65,7 +75,11 @@ async function generateReadmeContent_BASH(contents: any[], prefix: string): Prom
             readmeContent += `${indent}${name}/\n`;
 
             // Fetch directory contents and recursively generate readme content for nested contents
-            const response = await axios.get(`https://api.github.com/repos/${repoUrl}/contents/${path}`);
+            const response = await axios.get(`https://api.github.com/repos/${repoUrl}/contents/${path}`, {
+                headers: {
+                    Authorization: `Bearer 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`
+                }
+            });
             const dirContents = response.data;
             readmeContent += await generateReadmeContent_BASH(dirContents, prefix + (isLast ? '   ' : '│  ')); // Adjust the prefix for nested contents
         }
@@ -74,5 +88,5 @@ async function generateReadmeContent_BASH(contents: any[], prefix: string): Prom
 }
 
 // Example usage
-const repoUrl = 'GopalVerma1303/RN-paper-ui'; //try microsoft/vscode :D
+const repoUrl = 'GopalVerma1303/thirdfunding'; //try microsoft/vscode :D
 createReadmeFromRepo(repoUrl);
